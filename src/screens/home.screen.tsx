@@ -17,7 +17,7 @@ function HomeScreen(props): JSX.Element {
 
   return (
     <View style={{...backgroundStyle, ...styles.screen}}>
-      <Header />
+      <Header onPressMenu={() => props.navigation.openDrawer()} />
       <View
         style={{
           padding: 20,

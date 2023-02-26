@@ -1,17 +1,26 @@
-import React from 'react';
-import {View, TextInput, StyleSheet} from 'react-native';
+import React, {PropsWithChildren} from 'react';
+import {View, TextInput, StyleSheet, TouchableOpacity} from 'react-native';
 
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import {GestureResponderEvent} from 'react-native/Libraries/Types/CoreEventTypes';
 
 import {XColors} from '../config/constants';
 import {Accented} from './formatting.component';
 
-export const Header = props => {
+type HeaderProps = PropsWithChildren<{
+  onPressMenu: (e: GestureResponderEvent) => void;
+}>;
+
+export const Header = (props: HeaderProps) => {
   return (
-    <View style={{height: 150, backgroundColor: 'white', elevation: 3}}>
+    <View style={{backgroundColor: 'white', elevation: 3}}>
       <View style={styles.header}>
         <View style={styles.iconsBar}>
-          <View />
+          <TouchableOpacity
+            hitSlop={{right: 20, bottom: 20}}
+            onPress={props.onPressMenu}>
+            <AntDesign name="menu-fold" size={20} />
+          </TouchableOpacity>
           <View style={styles.iconsRow}>
             <View style={styles.iconButton}>
               <Accented>
@@ -47,12 +56,14 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'column',
     padding: 20,
+    paddingTop: 0,
   },
   body: {},
   iconsBar: {
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
+    alignItems: 'center',
   },
   iconsRow: {
     display: 'flex',
@@ -60,6 +71,7 @@ const styles = StyleSheet.create({
     height: 60,
     width: 100,
     justifyContent: 'space-between',
+    alignItems: 'center',
   },
   headerRow: {
     display: 'flex',

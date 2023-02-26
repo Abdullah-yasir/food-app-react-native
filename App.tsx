@@ -10,12 +10,12 @@ import {
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import {NavigationContainer} from '@react-navigation/native';
 
-import HomeScreen from './src/screens/home.screen';
-import RestaurantScreen from './src/screens/restaurant.screen';
-import {createStackNavigator} from '@react-navigation/stack';
-import {Screens} from './src/config/constants';
+import {createDrawerNavigator} from '@react-navigation/drawer';
+import HomeStack from './src/routes/home-stack.navigator';
+import SettingsScreen from './src/screens/settings.screen';
+import {XColors} from './src/config/constants';
 
-const Stack = createStackNavigator();
+const Drawer = createDrawerNavigator();
 
 function App(): JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
@@ -31,15 +31,15 @@ function App(): JSX.Element {
         backgroundColor={backgroundStyle.backgroundColor}
       />
       <NavigationContainer>
-        <Stack.Navigator screenOptions={{headerShown: false}}>
-          <Stack.Screen name={Screens.HOME_SCREEN} component={HomeScreen} />
-          <Stack.Screen
-            name={Screens.RESTAURANT_SCREEN}
-            component={RestaurantScreen}
-          />
-        </Stack.Navigator>
-        {/* <HomeScreen /> */}
-        {/* <RestaurantScreen /> */}
+        <Drawer.Navigator
+          screenOptions={{
+            headerShown: false,
+            drawerActiveBackgroundColor: '#cff7ff',
+            drawerActiveTintColor: XColors.accent,
+          }}>
+          <Drawer.Screen name="Home Stack" component={HomeStack} />
+          <Drawer.Screen name="Settings Screen" component={SettingsScreen} />
+        </Drawer.Navigator>
       </NavigationContainer>
     </SafeAreaView>
   );
