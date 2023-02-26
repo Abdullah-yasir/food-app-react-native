@@ -17,6 +17,7 @@ import {Colors} from 'react-native/Libraries/NewAppScreen';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 import {MealBar} from '../components/meal-bar.component';
 import {ProgramBar} from '../components/program-bar.component';
+import {DealBar} from '../components/deal-bar.component';
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -130,10 +131,7 @@ function MenuTab(props) {
 function MyProgramTab(props) {
   return (
     <ScrollView>
-      <View
-        style={{
-          height: '100%',
-        }}>
+      <View style={{height: '100%'}}>
         <View
           style={{
             width: '100%',
@@ -175,9 +173,19 @@ function MyProgramTab(props) {
 }
 function DealsTab(props) {
   return (
-    <View style={{flex: 1, backgroundColor: 'orange'}}>
-      <Text>MEnu</Text>
-    </View>
+    <ScrollView>
+      <View style={{paddingHorizontal: 20}}>
+        <View style={{height: 20}} />
+        <DealBar />
+        <DealBar />
+        <DealBar />
+        <DealBar />
+        <DealBar />
+        <DealBar />
+        <DealBar />
+        <DealBar />
+      </View>
+    </ScrollView>
   );
 }
 

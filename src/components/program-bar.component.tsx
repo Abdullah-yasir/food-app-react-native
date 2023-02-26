@@ -1,9 +1,8 @@
 import React from 'react';
-import {View, Text, Image, TouchableNativeFeedback} from 'react-native';
+import {View, Text, TouchableNativeFeedback} from 'react-native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-import {XColors} from '../config/constants';
 
-import {Accented, Heading} from './../components/formatting.component';
+import {Heading} from './../components/formatting.component';
 
 export const ProgramBar = props => {
   return (
@@ -12,8 +11,9 @@ export const ProgramBar = props => {
         overflow: 'hidden',
         borderRadius: 5,
         marginBottom: 20,
-        borderWidth: 1,
+        borderBottomWidth: 1,
         borderColor: 'lightgrey',
+        backgroundColor: 'white',
       }}>
       <TouchableNativeFeedback>
         <View

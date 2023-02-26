@@ -2,9 +2,9 @@ import React from 'react';
 import {View, Text, Image, TouchableNativeFeedback} from 'react-native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 
-import {Accented, Heading} from './../components/formatting.component';
+import {Accented, Heading} from './formatting.component';
 
-export const MealBar = props => {
+export const DealBar = props => {
   return (
     <View style={{overflow: 'hidden', borderRadius: 5, marginBottom: 20}}>
       <TouchableNativeFeedback>
@@ -33,7 +33,7 @@ export const MealBar = props => {
               }}>
               <View style={{marginHorizontal: 10}}>
                 <Heading level={3}>
-                  <Text>Cheese Burger</Text>
+                  <Text>Mega Deal</Text>
                 </Heading>
                 <View
                   style={{
@@ -41,31 +41,23 @@ export const MealBar = props => {
                     alignItems: 'center',
                     marginBottom: 5,
                   }}>
-                  <Accented>
-                    <AntDesign name="star" size={14} />
-                  </Accented>
-                  <Accented>
-                    <Text>4.1 Rating</Text>
-                  </Accented>
+                  <Text style={{maxWidth: 160}}>
+                    3 Zingers, 1 Small Pizza, 1 Drink
+                  </Text>
                 </View>
-                <TouchableNativeFeedback>
-                  <View
-                    style={{
-                      backgroundColor: 'tomato',
-                      alignItems: 'center',
-                      padding: 2,
-                      borderRadius: 500,
-                      width: 100,
-                    }}>
-                    <Text style={{color: 'white'}}>Add to Cart</Text>
-                  </View>
-                </TouchableNativeFeedback>
               </View>
             </View>
           </View>
-          <Heading level={3}>
-            <Text>$2.99</Text>
-          </Heading>
+          <View>
+            <Heading level={3}>
+              <Text>$2.99</Text>
+            </Heading>
+            <Heading
+              level={3}
+              style={{textDecorationLine: 'line-through', color: 'grey'}}>
+              <Text>$4.50</Text>
+            </Heading>
+          </View>
         </View>
       </TouchableNativeFeedback>
     </View>
