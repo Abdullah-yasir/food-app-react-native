@@ -11,3 +11,8 @@ export const Screens = {
   RESTAURANT_SCREEN: 'Restaurant',
   MY_PROGRAM_SCREEN: 'My Program',
 };
+
+export const XColors = {
+  lightgrey: '#f3f5f4',
+  accent: '#10c3b2',
+};
