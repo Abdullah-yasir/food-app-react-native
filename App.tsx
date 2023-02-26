@@ -16,7 +16,7 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 
 import {XColors} from './src/config/constants';
 
-import {Accented} from './src/components/formatting.component';
+import {Accented, Bold} from './src/components/formatting.component';
 import {Header} from './src/components/header.component';
 
 function App(): JSX.Element {
@@ -96,7 +96,9 @@ function App(): JSX.Element {
                     right: -10,
                     elevation: 5,
                   }}>
-                  <Text>20 - 30</Text>
+                  <Bold>
+                    <Text>20 - 30</Text>
+                  </Bold>
                   <Text>min</Text>
                 </View>
               </View>
