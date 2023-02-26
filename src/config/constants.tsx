@@ -11,6 +11,8 @@ export const Screens = {
   MENU_SCREEN: 'Menu',
   DEALS_SCREEN: 'Deals',
   MY_PROGRAM_SCREEN: 'My Program',
+  LOGIN_SCREEN: 'Login',
+  SIGN_UP_SCREEN: 'Sign Up',
 };
 
 export const XColors = {

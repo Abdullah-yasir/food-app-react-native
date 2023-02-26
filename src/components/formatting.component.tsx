@@ -2,8 +2,12 @@ import {XColors} from '../config/constants';
 import {withStyles} from '../hoc/with-styles.hoc';
 import type {CSSProperties, PropsWithChildren} from 'react';
 
-export const Accented = ({children}) => {
-  return withStyles(children, {color: XColors.accent});
+type AccentedProps = PropsWithChildren<{
+  style?: CSSProperties;
+}>;
+
+export const Accented = ({children, style = {}}: AccentedProps) => {
+  return withStyles(children, {color: XColors.accent, ...style});
 };
 
 export const Bold = ({children}) => {

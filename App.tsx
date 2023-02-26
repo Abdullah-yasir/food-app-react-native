@@ -10,12 +10,18 @@ import {
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import {NavigationContainer} from '@react-navigation/native';
 
-import {createDrawerNavigator} from '@react-navigation/drawer';
-import HomeStack from './src/routes/home-stack.navigator';
-import SettingsScreen from './src/screens/settings.screen';
-import {XColors} from './src/config/constants';
+import HomeDrawer from './src/routes/home-drawer.navigator';
+import AuthStack from './src/routes/auth-stack.navigator';
 
-const Drawer = createDrawerNavigator();
+const reducer = (state, action) => {
+  switch (action.type) {
+    case 'value':
+      return state;
+
+    default:
+      return state;
+  }
+};
 
 function App(): JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
@@ -24,6 +30,8 @@ function App(): JSX.Element {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
 
+  const isLoggedIn = false;
+
   return (
     <SafeAreaView style={{...backgroundStyle, ...styles.app}}>
       <StatusBar
@@ -31,15 +39,7 @@ function App(): JSX.Element {
         backgroundColor={backgroundStyle.backgroundColor}
       />
       <NavigationContainer>
-        <Drawer.Navigator
-          screenOptions={{
-            headerShown: false,
-            drawerActiveBackgroundColor: '#cff7ff',
-            drawerActiveTintColor: XColors.accent,
-          }}>
-          <Drawer.Screen name="Home Stack" component={HomeStack} />
-          <Drawer.Screen name="Settings Screen" component={SettingsScreen} />
-        </Drawer.Navigator>
+        {isLoggedIn ? <HomeDrawer /> : <AuthStack />}
       </NavigationContainer>
     </SafeAreaView>
   );
