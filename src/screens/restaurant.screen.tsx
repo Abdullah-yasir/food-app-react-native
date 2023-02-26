@@ -100,11 +100,11 @@ function RestaurantScreen(): JSX.Element {
       <View style={{flex: 1}}>
         <Tab.Navigator initialRouteName={Screens.MENU_SCREEN}>
           <Tab.Screen name={Screens.MENU_SCREEN} component={MenuTab} />
+          <Tab.Screen name={Screens.DEALS_SCREEN} component={DealsTab} />
           <Tab.Screen
             name={Screens.MY_PROGRAM_SCREEN}
             component={MyProgramTab}
           />
-          <Tab.Screen name={Screens.DEALS_SCREEN} component={DealsTab} />
         </Tab.Navigator>
       </View>
     </View>

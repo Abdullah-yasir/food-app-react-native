@@ -1,8 +1,7 @@
 import React from 'react';
 import {View, Text, Image, TouchableNativeFeedback} from 'react-native';
-import AntDesign from 'react-native-vector-icons/AntDesign';
 
-import {Accented, Heading} from './formatting.component';
+import {Heading} from './formatting.component';
 
 export const DealBar = props => {
   return (
