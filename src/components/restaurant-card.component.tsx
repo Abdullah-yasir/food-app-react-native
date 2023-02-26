@@ -45,7 +45,7 @@ export const RestaurantCard = props => {
               backgroundColor: 'white',
               borderRadius: 20,
               paddingHorizontal: 15,
-              paddingVertical: 10,
+              paddingVertical: 5,
               alignSelf: 'flex-end',
               marginRight: 20,
               position: 'absolute',
@@ -56,7 +56,7 @@ export const RestaurantCard = props => {
             <Bold>
               <Text>20 - 30</Text>
             </Bold>
-            <Text>min</Text>
+            <Text style={{fontSize: 12, marginTop: -5}}>min</Text>
           </View>
         </View>
         <View style={{padding: 10}}>

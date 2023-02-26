@@ -3,20 +3,15 @@ import React from 'react';
 import {
   SafeAreaView,
   StatusBar,
-  View,
   useColorScheme,
-  ScrollView,
   StyleSheet,
-  Text,
 } from 'react-native';
 
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import {NavigationContainer} from '@react-navigation/native';
-import AntDesign from 'react-native-vector-icons/AntDesign';
 
-import {Header} from './src/components/header.component';
-import {RestaurantCard} from './src/components/restaurant-card.component';
-import {Accented} from './src/components/formatting.component';
+import HomeScreen from './src/screens/home.screen';
+import RestaurantScreen from './src/screens/restaurant.screen';
 
 function App(): JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
@@ -26,42 +21,21 @@ function App(): JSX.Element {
   };
 
   return (
-    <SafeAreaView style={{...backgroundStyle, display: 'flex', flex: 1}}>
+    <SafeAreaView style={{...backgroundStyle, ...styles.app}}>
       <StatusBar
         barStyle={isDarkMode ? 'light-content' : 'dark-content'}
         backgroundColor={backgroundStyle.backgroundColor}
       />
       <NavigationContainer>
-        <View style={styles.screen}>
-          <Header />
-          <View
-            style={{
-              padding: 20,
-              display: 'flex',
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-            }}>
-            <Text style={{fontSize: 24, fontWeight: '500'}}>
-              Specially Selected For You
-            </Text>
-            <Accented>
-              <AntDesign name="arrowright" size={24} />
-            </Accented>
-          </View>
-          <ScrollView horizontal>
-            <RestaurantCard />
-            <RestaurantCard />
-          </ScrollView>
-        </View>
+        {/* <HomeScreen /> */}
+        <RestaurantScreen />
       </NavigationContainer>
     </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  screen: {},
-  body: {},
+  app: {display: 'flex', flex: 1},
 });
 
 export default App;
