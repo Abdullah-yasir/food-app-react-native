@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, useColorScheme, View} from 'react-native';
+import {StyleSheet, useColorScheme, View, Text} from 'react-native';
 
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 
