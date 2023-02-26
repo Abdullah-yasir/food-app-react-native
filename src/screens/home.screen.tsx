@@ -6,8 +6,9 @@ import {Colors} from 'react-native/Libraries/NewAppScreen';
 import {Accented} from '../components/formatting.component';
 import {Header} from '../components/header.component';
 import {RestaurantCard} from '../components/restaurant-card.component';
+import {Screens} from '../config/constants';
 
-function HomeScreen(): JSX.Element {
+function HomeScreen(props): JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
 
   const backgroundStyle = {
@@ -33,7 +34,9 @@ function HomeScreen(): JSX.Element {
         </Accented>
       </View>
       <ScrollView horizontal>
-        <RestaurantCard />
+        <RestaurantCard
+          onClick={() => props.navigation.navigate(Screens.RESTAURANT_SCREEN)}
+        />
         <RestaurantCard />
         <RestaurantCard />
         <RestaurantCard />

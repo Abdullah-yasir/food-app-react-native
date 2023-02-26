@@ -12,6 +12,10 @@ import {NavigationContainer} from '@react-navigation/native';
 
 import HomeScreen from './src/screens/home.screen';
 import RestaurantScreen from './src/screens/restaurant.screen';
+import {createStackNavigator} from '@react-navigation/stack';
+import {Screens} from './src/config/constants';
+
+const Stack = createStackNavigator();
 
 function App(): JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
@@ -27,8 +31,15 @@ function App(): JSX.Element {
         backgroundColor={backgroundStyle.backgroundColor}
       />
       <NavigationContainer>
+        <Stack.Navigator screenOptions={{headerShown: false}}>
+          <Stack.Screen name={Screens.HOME_SCREEN} component={HomeScreen} />
+          <Stack.Screen
+            name={Screens.RESTAURANT_SCREEN}
+            component={RestaurantScreen}
+          />
+        </Stack.Navigator>
         {/* <HomeScreen /> */}
-        <RestaurantScreen />
+        {/* <RestaurantScreen /> */}
       </NavigationContainer>
     </SafeAreaView>
   );

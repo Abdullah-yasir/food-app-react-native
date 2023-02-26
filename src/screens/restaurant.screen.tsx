@@ -4,6 +4,7 @@ import {
   Text,
   StyleSheet,
   useColorScheme,
+  TouchableOpacity,
   Image,
   ScrollView,
 } from 'react-native';
@@ -21,7 +22,7 @@ import {DealBar} from '../components/deal-bar.component';
 
 const Tab = createMaterialTopTabNavigator();
 
-function RestaurantScreen(): JSX.Element {
+function RestaurantScreen(props): JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
 
   const backgroundStyle = {
@@ -51,11 +52,13 @@ function RestaurantScreen(): JSX.Element {
               flexDirection: 'row',
               justifyContent: 'space-between',
             }}>
-            <View style={styles.iconButton}>
-              <Accented>
-                <AntDesign name="arrowleft" size={24} />
-              </Accented>
-            </View>
+            <TouchableOpacity onPress={() => props.navigation.goBack()}>
+              <View style={styles.iconButton}>
+                <Accented>
+                  <AntDesign name="arrowleft" size={24} />
+                </Accented>
+              </View>
+            </TouchableOpacity>
             <View style={{flexDirection: 'row'}}>
               <View style={styles.iconButton}>
                 <Accented>

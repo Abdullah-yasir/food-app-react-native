@@ -1,11 +1,22 @@
-import React from 'react';
-import {View, Text, StyleSheet, Image} from 'react-native';
+import React, {PropsWithChildren} from 'react';
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  TouchableNativeFeedback,
+} from 'react-native';
+
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import {XColors} from '../config/constants';
 
 import {Accented, Bold} from './formatting.component';
 
-export const RestaurantCard = props => {
+type RestaurantCardProps = PropsWithChildren<{
+  onClick?: CallableFunction;
+}>;
+
+export const RestaurantCard = (props: RestaurantCardProps) => {
   return (
     <View>
       <View
@@ -59,22 +70,24 @@ export const RestaurantCard = props => {
             <Text style={{fontSize: 12, marginTop: -5}}>min</Text>
           </View>
         </View>
-        <View style={{padding: 10}}>
-          <Text style={{fontSize: 20, fontWeight: '500'}}>
-            FRENCY TACOS - 1
-          </Text>
-          <View style={{flexDirection: 'row', alignItems: 'center'}}>
-            <Accented>
-              <AntDesign name="star" size={14} />
-            </Accented>
-            <Text>
-              <Accented>
-                <Text>4.1 Rating</Text>
-              </Accented>{' '}
-              (500+)
+        <TouchableNativeFeedback onPress={props.onClick}>
+          <View style={{padding: 10}}>
+            <Text style={{fontSize: 20, fontWeight: '500'}}>
+              FRENCY TACOS - 1
             </Text>
+            <View style={{flexDirection: 'row', alignItems: 'center'}}>
+              <Accented>
+                <AntDesign name="star" size={14} />
+              </Accented>
+              <Text>
+                <Accented>
+                  <Text>4.1 Rating</Text>
+                </Accented>{' '}
+                (500+)
+              </Text>
+            </View>
           </View>
-        </View>
+        </TouchableNativeFeedback>
       </View>
     </View>
   );
