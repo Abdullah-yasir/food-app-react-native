@@ -1,5 +1,12 @@
 import React from 'react';
-import {View, Text, StyleSheet, useColorScheme, Image} from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  useColorScheme,
+  Image,
+  ScrollView,
+} from 'react-native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import {Screens, XColors} from '../config/constants';
 
@@ -8,6 +15,7 @@ import {Accented, Heading} from './../components/formatting.component';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
+import {MealBar} from '../components/meal-bar.component';
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -87,7 +95,7 @@ function RestaurantScreen(): JSX.Element {
           </Accented>
         </View>
       </View>
-      <View style={{backgroundColor: 'blue', height: 999}}>
+      <View style={{flex: 1}}>
         <Tab.Navigator initialRouteName={Screens.MENU_SCREEN}>
           <Tab.Screen name={Screens.MENU_SCREEN} component={MenuTab} />
           <Tab.Screen
@@ -103,8 +111,17 @@ function RestaurantScreen(): JSX.Element {
 
 function MenuTab(props) {
   return (
-    <View style={{flex: 1, backgroundColor: 'yellow'}}>
-      <Text>MEnu</Text>
+    <View style={{padding: 20}}>
+      <ScrollView>
+        <MealBar />
+        <MealBar />
+        <MealBar />
+        <MealBar />
+        <MealBar />
+        <MealBar />
+        <MealBar />
+        <MealBar />
+      </ScrollView>
     </View>
   );
 }
@@ -124,7 +141,7 @@ function DealsTab(props) {
 }
 
 const styles = StyleSheet.create({
-  screen: {},
+  screen: {height: '100%'},
   iconButton: {
     width: 45,
     height: 45,
