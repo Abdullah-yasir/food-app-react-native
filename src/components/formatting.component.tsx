@@ -1,6 +1,6 @@
 import {XColors} from '../config/constants';
 import {withStyles} from '../hoc/with-styles.hoc';
-import type {PropsWithChildren} from 'react';
+import type {CSSProperties, PropsWithChildren} from 'react';
 
 export const Accented = ({children}) => {
   return withStyles(children, {color: XColors.accent});
@@ -12,16 +12,18 @@ export const Bold = ({children}) => {
 
 type HeadingProps = PropsWithChildren<{
   level: 1 | 2 | 3;
+  style?: CSSProperties;
 }>;
 
-export const Heading = ({level, children}: HeadingProps) => {
+export const Heading = ({level, style = {}, children}: HeadingProps) => {
   const levels = {
     1: {fontSize: 24, fontWeight: '900', marginVertical: 12},
     2: {fontSize: 20, fontWeight: '700', marginVertical: 8},
     3: {fontSize: 16, fontWeight: '500', marginVertical: 4},
   };
   return withStyles(children as JSX.Element, {
-    ...levels[level],
     color: 'black',
+    ...levels[level],
+    ...style,
   });
 };

@@ -16,6 +16,7 @@ import {Colors} from 'react-native/Libraries/NewAppScreen';
 
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 import {MealBar} from '../components/meal-bar.component';
+import {ProgramBar} from '../components/program-bar.component';
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -111,8 +112,9 @@ function RestaurantScreen(): JSX.Element {
 
 function MenuTab(props) {
   return (
-    <View style={{padding: 20}}>
-      <ScrollView>
+    <ScrollView>
+      <View style={{paddingHorizontal: 20}}>
+        <View style={{height: 20}} />
         <MealBar />
         <MealBar />
         <MealBar />
@@ -121,15 +123,54 @@ function MenuTab(props) {
         <MealBar />
         <MealBar />
         <MealBar />
-      </ScrollView>
-    </View>
+      </View>
+    </ScrollView>
   );
 }
 function MyProgramTab(props) {
   return (
-    <View style={{flex: 1, backgroundColor: 'red'}}>
-      <Text>MEnu</Text>
-    </View>
+    <ScrollView>
+      <View
+        style={{
+          height: '100%',
+        }}>
+        <View
+          style={{
+            width: '100%',
+            backgroundColor: XColors.accent,
+            height: 120,
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}>
+          <Heading level={1} style={{color: 'white', margin: 0}}>
+            <Text>0 Points</Text>
+          </Heading>
+          <View
+            style={{
+              width: 150,
+              overflow: 'hidden',
+            }}>
+            <Image
+              source={require('./../../assets/barcode.png')}
+              style={{
+                width: '100%',
+                resizeMode: 'stretch',
+                height: 80,
+              }}
+            />
+          </View>
+        </View>
+        <View style={{paddingHorizontal: 20, paddingTop: 20}}>
+          <ProgramBar />
+          <ProgramBar />
+          <ProgramBar />
+          <ProgramBar />
+          <ProgramBar />
+          <ProgramBar />
+          <ProgramBar />
+        </View>
+      </View>
+    </ScrollView>
   );
 }
 function DealsTab(props) {
