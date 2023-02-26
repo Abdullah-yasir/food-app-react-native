@@ -5,16 +5,21 @@ import {
   Text,
   View,
   TouchableNativeFeedback,
+  TouchableOpacity,
 } from 'react-native';
-import {TouchableOpacity} from 'react-native-gesture-handler';
-
+import {useDispatch} from 'react-redux';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
+
 import {Accented, Heading} from '../components/formatting.component';
 import {Input, PasswordInput} from '../components/input.component';
+
 import {Screens, XColors} from '../config/constants';
+import {LOGIN} from '../store/action-types';
 
 function LoginScreen(props): JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
+
+  const dispatch = useDispatch();
 
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
@@ -53,7 +58,10 @@ function LoginScreen(props): JSX.Element {
               width: 100,
               elevation: 3,
             }}>
-            <TouchableNativeFeedback>
+            <TouchableNativeFeedback
+              onPress={() => {
+                dispatch({type: LOGIN});
+              }}>
               <View
                 style={{
                   backgroundColor: XColors.accent,

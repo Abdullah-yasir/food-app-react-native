@@ -6,22 +6,13 @@ import {
   useColorScheme,
   StyleSheet,
 } from 'react-native';
-
 import {Colors} from 'react-native/Libraries/NewAppScreen';
+
+import {Provider} from 'react-redux';
 import {NavigationContainer} from '@react-navigation/native';
 
-import HomeDrawer from './src/routes/home-drawer.navigator';
-import AuthStack from './src/routes/auth-stack.navigator';
-
-const reducer = (state, action) => {
-  switch (action.type) {
-    case 'value':
-      return state;
-
-    default:
-      return state;
-  }
-};
+import {store} from './src/store';
+import {Routes} from './src/routes';
 
 function App(): JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
@@ -30,17 +21,17 @@ function App(): JSX.Element {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
 
-  const isLoggedIn = false;
-
   return (
     <SafeAreaView style={{...backgroundStyle, ...styles.app}}>
       <StatusBar
         barStyle={isDarkMode ? 'light-content' : 'dark-content'}
         backgroundColor={backgroundStyle.backgroundColor}
       />
-      <NavigationContainer>
-        {isLoggedIn ? <HomeDrawer /> : <AuthStack />}
-      </NavigationContainer>
+      <Provider store={store}>
+        <NavigationContainer>
+          <Routes />
+        </NavigationContainer>
+      </Provider>
     </SafeAreaView>
   );
 }
