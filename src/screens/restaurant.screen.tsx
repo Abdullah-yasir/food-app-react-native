@@ -9,13 +9,13 @@ import {
   ScrollView,
 } from 'react-native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-import {Screens, XColors} from '../config/constants';
-
-import {Accented, Heading} from './../components/formatting.component';
-
-import {Colors} from 'react-native/Libraries/NewAppScreen';
 
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
+import {Colors} from 'react-native/Libraries/NewAppScreen';
+
+import {Screens, XColors} from '../config/constants';
+
+import {Accented, Heading} from '../components/formatting.component';
 import {MealBar} from '../components/meal-bar.component';
 import {ProgramBar} from '../components/program-bar.component';
 import {DealBar} from '../components/deal-bar.component';
@@ -31,27 +31,15 @@ function RestaurantScreen(props): JSX.Element {
 
   return (
     <View style={{...backgroundStyle, ...styles.screen}}>
-      <View
-        style={{
-          backgroundColor: 'white',
-          overflow: 'hidden',
-        }}>
-        <View
-          style={{
-            position: 'relative',
-            height: 180,
-          }}>
+      <View style={styles.banner}>
+        <View style={styles.bannerImage}>
           <View style={StyleSheet.absoluteFill}>
             <Image
               style={{width: '100%'}}
               source={require('./../../assets/download.jpeg')}
             />
           </View>
-          <View
-            style={{
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-            }}>
+          <View style={styles.headerButtonsRight}>
             <TouchableOpacity onPress={() => props.navigation.goBack()}>
               <View style={styles.iconButton}>
                 <Accented>
@@ -203,6 +191,18 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginLeft: 10,
     marginTop: 10,
+  },
+  banner: {
+    backgroundColor: 'white',
+    overflow: 'hidden',
+  },
+  bannerImage: {
+    position: 'relative',
+    height: 180,
+  },
+  headerButtonsRight: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   },
 });
 

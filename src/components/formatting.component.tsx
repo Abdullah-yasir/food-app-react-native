@@ -7,11 +7,11 @@ type AccentedProps = PropsWithChildren<{
 }>;
 
 export const Accented = ({children, style = {}}: AccentedProps) => {
-  return withStyles(children, {color: XColors.accent, ...style});
+  return withStyles(children as JSX.Element, {color: XColors.accent, ...style});
 };
 
-export const Bold = ({children}) => {
-  return withStyles(children, {fontWeight: 'bold'});
+export const Bold = ({children}: PropsWithChildren) => {
+  return withStyles(children as JSX.Element, {fontWeight: 'bold'});
 };
 
 type HeadingProps = PropsWithChildren<{
