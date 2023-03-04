@@ -1,10 +1,13 @@
 import React from 'react';
 import {
-  StyleSheet,
-  useColorScheme,
   View,
   Image,
   Text,
+  StyleSheet,
+  ToastAndroid,
+  ScrollView,
+  useColorScheme,
+  TouchableNativeFeedback,
   TouchableWithoutFeedback,
 } from 'react-native';
 
@@ -12,9 +15,9 @@ import {Colors} from 'react-native/Libraries/NewAppScreen';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 
 import {Accented, Heading} from '../components/formatting.component';
-import {XColors} from '../config/constants';
-import {TouchableNativeFeedback} from 'react-native-gesture-handler';
 import {MealBarProps} from '../components/meal-bar.component';
+
+import {Screens, XColors} from '../config/constants';
 
 type CartItemProps = MealBarProps & {
   count?: Number;
@@ -24,7 +27,13 @@ function CartItem(props: CartItemProps) {
   const [count, setCount] = React.useState(1);
   const [showCounter, setShowCounter] = React.useState(false);
 
-  const imageSrc = false;
+  const {
+    title = 'Un named',
+    price = 0.0,
+    imageSrc,
+    onPress,
+    currencySymbol = '$',
+  } = props;
 
   return (
     <View
@@ -48,7 +57,7 @@ function CartItem(props: CartItemProps) {
         </View>
       </TouchableWithoutFeedback>
       <View style={{borderRadius: 5, overflow: 'hidden'}}>
-        <TouchableNativeFeedback>
+        <TouchableNativeFeedback onPress={onPress}>
           <View style={{flexDirection: 'row'}}>
             <View
               style={{
@@ -81,11 +90,13 @@ function CartItem(props: CartItemProps) {
             <View style={{marginLeft: 15}}>
               <Accented>
                 <Heading level={2}>
-                  <Text>Crunch Cheese Burger</Text>
+                  <Text>{title}</Text>
                 </Heading>
               </Accented>
               <Heading level={3}>
-                <Text>$ 2.53</Text>
+                <Text>
+                  {currencySymbol} {price}
+                </Text>
               </Heading>
             </View>
           </View>
@@ -123,13 +134,60 @@ function CartScreen(props): JSX.Element {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
 
+  const cart: Array<CartItemProps> = [
+    {
+      title: 'Cheese Burger',
+      price: 2.99,
+      imageSrc: require('./../../assets/meal.jpeg'),
+      rating: 4.1,
+      currencySymbol: '$',
+      onAddToCart: () => {
+        ToastAndroid.show('Added to Cart', ToastAndroid.SHORT);
+      },
+      onPress: () => {
+        props.navigation.navigate(Screens.PRODUCT_SCREEN);
+      },
+    },
+    {
+      title: 'Pizza Bar BQ',
+      price: 6.59,
+      imageSrc: require('./../../assets/meal.jpeg'),
+      rating: 4.1,
+      currencySymbol: '$',
+      onAddToCart: () => {
+        ToastAndroid.show('Added to Cart', ToastAndroid.SHORT);
+      },
+    },
+    {
+      title: 'Manchorian',
+      price: 1.59,
+      imageSrc: require('./../../assets/meal.jpeg'),
+      rating: 4.1,
+      currencySymbol: '$',
+      onAddToCart: () => {
+        ToastAndroid.show('Added to Cart', ToastAndroid.SHORT);
+      },
+    },
+    {
+      title: 'Manchorian',
+      price: 1.59,
+      imageSrc: require('./../../assets/meal.jpeg'),
+      rating: 4.1,
+      currencySymbol: '$',
+      onAddToCart: () => {
+        ToastAndroid.show('Added to Cart', ToastAndroid.SHORT);
+      },
+    },
+  ];
+
   return (
-    <View style={{...backgroundStyle, ...styles.screen}}>
-      <CartItem />
-      <CartItem />
-      <CartItem />
-      <CartItem />
-    </View>
+    <ScrollView>
+      <View style={{...backgroundStyle, ...styles.screen}}>
+        {cart.map(item => (
+          <CartItem {...item} />
+        ))}
+      </View>
+    </ScrollView>
   );
 }
 
