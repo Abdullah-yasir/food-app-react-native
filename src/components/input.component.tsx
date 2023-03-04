@@ -15,29 +15,70 @@ type InputProps = TextInputProps & {
 };
 
 export const Input = (props: InputProps) => {
+  const [isFocused, setIsFocused] = React.useState(false);
+
+  const inputBorderStyles = {
+    borderColor: isFocused ? XColors.accent : XColors.lightgrey,
+    borderWidth: 0.5,
+  };
+
   return (
     <View style={styles.searchContainer}>
-      <TextInput style={styles.search} {...props} />
-      <AntDesign style={styles.serachIcon} name={props.icon} size={16} />
+      <TextInput
+        style={{
+          ...inputBorderStyles,
+          ...styles.search,
+        }}
+        onFocus={() => setIsFocused(true)}
+        onBlur={() => setIsFocused(false)}
+        {...props}
+      />
+      <AntDesign
+        style={styles.serachIcon}
+        name={props.icon}
+        color={isFocused ? XColors.accent : 'grey'}
+        size={16}
+      />
     </View>
   );
 };
 
 export const PasswordInput = (props: InputProps) => {
   const [showPassword, setShowPassword] = React.useState(false);
+  const [isFocused, setIsFocused] = React.useState(false);
+
+  const inputBorderStyles = {
+    borderColor: isFocused ? XColors.accent : XColors.lightgrey,
+    borderWidth: 0.5,
+  };
+
   return (
     <View style={styles.searchContainer}>
       <TextInput
-        style={styles.search}
+        style={{
+          ...inputBorderStyles,
+          ...styles.search,
+        }}
         {...props}
+        onFocus={() => setIsFocused(true)}
+        onBlur={() => setIsFocused(false)}
         secureTextEntry={!showPassword}
       />
-      <AntDesign style={styles.serachIcon} name={props.icon} size={16} />
+      <AntDesign
+        style={styles.serachIcon}
+        name={props.icon}
+        color={isFocused ? XColors.accent : 'grey'}
+        size={16}
+      />
       <TouchableOpacity
         hitSlop={{top: 50, bottom: 50, right: 50}}
         onPress={() => setShowPassword(!showPassword)}
-        style={{top: 15, right: 15, position: 'absolute'}}>
-        <AntDesign name={showPassword ? 'eye' : 'eyeo'} size={20} />
+        style={styles.rightIconButton}>
+        <AntDesign
+          name={showPassword ? 'eye' : 'eyeo'}
+          color={isFocused ? XColors.accent : 'grey'}
+          size={20}
+        />
       </TouchableOpacity>
     </View>
   );
@@ -60,4 +101,5 @@ const styles = StyleSheet.create({
     left: 15,
     top: 15,
   },
+  rightIconButton: {top: 15, right: 15, position: 'absolute'},
 });

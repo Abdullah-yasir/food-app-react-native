@@ -1,0 +1,23 @@
+28-Feb-2023
+
+1. _we will have a section <<specially selected for you>> if we have a list of more than 10 restaurants and if the user is logged in, we will choose a list of 5 restaurants to scroll horizontally. otherwise if we have less than 10 restaurants or if the user is not logged in we will not display this section._
+    *Questions:*
+        What to show when user is not logged in or restaurants are less than 10?
+        Below horizontal list of restaurants, there's a lot of empty room, what to show there?
+
+2. _case 1: the customer searched by restaurant name. we will have a list sorted by distance with a style similar to the following image_
+    *Questions:*
+        Image provided is not suitable for vertical scroll, are we showing search results horizontally then? (Search results in a horizontal scroll is not a good practice)
+
+3. _if the restaurant owner has not defined an image of the restaurant, we will have a gray font instead of the photo. ( same thing for the other photos of the products…)_   
+    *Questions:*
+        Please explain "grey font"
+
+4. _DEALs Tab_
+    *Questions:*
+        Not User Interface example is provided
+
+5. _if the user is not logged in
+when he clicks on the icon, he will have the 2 fields to enter his email and password, or to register. he can register using only 3 fields_
+    *Questions:*
+        Explain "the icon"
