@@ -5,6 +5,7 @@ import {ImageSourcePropType} from 'react-native/Libraries/Image/Image';
 
 import {Double} from 'react-native/Libraries/Types/CodegenTypes';
 import {GestureResponderEvent} from 'react-native/Libraries/Types/CoreEventTypes';
+import {XColors} from '../config/constants';
 
 import {Accented, Heading} from './../components/formatting.component';
 
@@ -89,18 +90,20 @@ export const MealBar = (props: MealBarProps) => {
                     </Accented>
                   </View>
                 ) : null}
-                <TouchableNativeFeedback onPress={onAddToCart}>
-                  <View
-                    style={{
-                      backgroundColor: 'tomato',
-                      alignItems: 'center',
-                      padding: 2,
-                      borderRadius: 500,
-                      width: 100,
-                    }}>
-                    <Text style={{color: 'white'}}>Add to Cart</Text>
-                  </View>
-                </TouchableNativeFeedback>
+                {onAddToCart ? (
+                  <TouchableNativeFeedback onPress={onAddToCart}>
+                    <View
+                      style={{
+                        backgroundColor: XColors.orange,
+                        alignItems: 'center',
+                        padding: 2,
+                        borderRadius: 500,
+                        width: 100,
+                      }}>
+                      <Text style={{color: 'white'}}>Add to Cart</Text>
+                    </View>
+                  </TouchableNativeFeedback>
+                ) : null}
               </View>
             </View>
           </View>

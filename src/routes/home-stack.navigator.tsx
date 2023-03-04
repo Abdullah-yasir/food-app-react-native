@@ -6,6 +6,7 @@ import {Screens} from '../config/constants';
 import HomeScreen from '../screens/home.screen';
 import RestaurantScreen from '../screens/restaurant.screen';
 import CartScreen from '../screens/cart.screen';
+import ProductScreen from '../screens/product.screen';
 
 const Stack = createStackNavigator();
 
@@ -17,7 +18,12 @@ export default function HomeStack() {
         name={Screens.RESTAURANT_SCREEN}
         component={RestaurantScreen}
       />
-      <Stack.Screen name={Screens.CART_SCREEN} component={CartScreen} />
+      <Stack.Screen
+        name={Screens.CART_SCREEN}
+        component={CartScreen}
+        options={{headerShown: true}}
+      />
+      <Stack.Screen name={Screens.PRODUCT_SCREEN} component={ProductScreen} />
     </Stack.Navigator>
   );
 }

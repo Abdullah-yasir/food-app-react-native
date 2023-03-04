@@ -44,35 +44,40 @@ function RestaurantScreen(props): JSX.Element {
             <TouchableOpacity onPress={() => props.navigation.goBack()}>
               <View style={styles.iconButton}>
                 <Accented>
-                  <AntDesign name="arrowleft" size={24} />
+                  <AntDesign name="arrowleft" size={20} />
                 </Accented>
               </View>
             </TouchableOpacity>
             <View style={{flexDirection: 'row'}}>
               <View style={styles.iconButton}>
                 <Accented>
-                  <AntDesign name="hearto" size={24} />
+                  <AntDesign name="hearto" size={20} />
                 </Accented>
               </View>
               <View style={styles.iconButton}>
                 <Accented>
-                  <AntDesign name="sharealt" size={24} />
+                  <AntDesign name="sharealt" size={20} />
                 </Accented>
               </View>
-              <View style={{...styles.iconButton, marginRight: 10}}>
+              <View style={{...styles.iconButton, marginRight: 20}}>
                 <Accented>
-                  <AntDesign name="search1" size={24} />
+                  <AntDesign name="search1" size={20} />
                 </Accented>
               </View>
             </View>
           </View>
         </View>
-        <View style={{padding: 10}}>
+        <View style={{paddingHorizontal: 20, paddingTop: 10}}>
           <Heading level={1}>
             <Text>FRENCY TACOS - 1</Text>
           </Heading>
           <Text>20 - 30min • Burger • Fries • Donuts</Text>
-          <View style={{flexDirection: 'row', alignItems: 'center'}}>
+          <View
+            style={{
+              flexDirection: 'row',
+              alignItems: 'center',
+              marginBottom: 5,
+            }}>
             <Accented>
               <AntDesign name="star" size={14} />
             </Accented>
@@ -115,7 +120,7 @@ function MenuTab(props) {
         ToastAndroid.show('Added to Cart', ToastAndroid.SHORT);
       },
       onPress: () => {
-        props.navigation.navigate(Screens.CART_SCREEN);
+        props.navigation.navigate(Screens.PRODUCT_SCREEN);
       },
     },
     {
@@ -205,6 +210,7 @@ function MyProgramTab(props) {
     </ScrollView>
   );
 }
+
 function DealsTab(props) {
   return (
     <ScrollView>
@@ -232,7 +238,7 @@ const styles = StyleSheet.create({
     borderRadius: 25,
     alignItems: 'center',
     justifyContent: 'center',
-    marginLeft: 10,
+    marginLeft: 20,
     marginTop: 10,
   },
   banner: {
