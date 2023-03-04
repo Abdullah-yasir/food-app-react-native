@@ -1,13 +1,40 @@
 import React from 'react';
 import {View, Text, Image, TouchableNativeFeedback} from 'react-native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import {ImageSourcePropType} from 'react-native/Libraries/Image/Image';
+
+import {Double} from 'react-native/Libraries/Types/CodegenTypes';
+import {GestureResponderEvent} from 'react-native/Libraries/Types/CoreEventTypes';
 
 import {Accented, Heading} from './../components/formatting.component';
 
-export const MealBar = props => {
+export type MealBarProps = {
+  title?: string;
+  currencySymbol?: string;
+
+  imageSrc?: ImageSourcePropType;
+
+  rating?: Double;
+  price?: Double;
+
+  onAddToCart?: (e: GestureResponderEvent) => void;
+  onPress?: (e: GestureResponderEvent) => void;
+};
+
+export const MealBar = (props: MealBarProps) => {
+  const {
+    title = 'Un named',
+    rating = 0.0,
+    price = 0.0,
+    onAddToCart,
+    imageSrc,
+    onPress,
+    currencySymbol = '$',
+  } = props;
+
   return (
     <View style={{overflow: 'hidden', borderRadius: 5, marginBottom: 20}}>
-      <TouchableNativeFeedback>
+      <TouchableNativeFeedback onPress={onPress}>
         <View
           style={{
             flexDirection: 'row',
@@ -21,10 +48,22 @@ export const MealBar = props => {
                 borderRadius: 5,
                 overflow: 'hidden',
               }}>
-              <Image
-                style={{resizeMode: 'center', width: '100%', height: '100%'}}
-                source={require('./../../assets/meal.jpeg')}
-              />
+              {imageSrc ? (
+                <Image
+                  style={{resizeMode: 'center', width: '100%', height: '100%'}}
+                  source={imageSrc}
+                />
+              ) : (
+                <View
+                  style={{
+                    flex: 1,
+                    backgroundColor: 'lightgrey',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                  }}>
+                  <AntDesign name="picture" size={20} />
+                </View>
+              )}
             </View>
             <View
               style={{
@@ -33,22 +72,24 @@ export const MealBar = props => {
               }}>
               <View style={{marginHorizontal: 10}}>
                 <Heading level={3}>
-                  <Text>Cheese Burger</Text>
+                  <Text>{title}</Text>
                 </Heading>
-                <View
-                  style={{
-                    flexDirection: 'row',
-                    alignItems: 'center',
-                    marginBottom: 5,
-                  }}>
-                  <Accented>
-                    <AntDesign name="star" size={14} />
-                  </Accented>
-                  <Accented>
-                    <Text>4.1 Rating</Text>
-                  </Accented>
-                </View>
-                <TouchableNativeFeedback>
+                {rating ? (
+                  <View
+                    style={{
+                      flexDirection: 'row',
+                      alignItems: 'center',
+                      marginBottom: 5,
+                    }}>
+                    <Accented>
+                      <AntDesign name="star" size={14} />
+                    </Accented>
+                    <Accented>
+                      <Text>{rating} Rating</Text>
+                    </Accented>
+                  </View>
+                ) : null}
+                <TouchableNativeFeedback onPress={onAddToCart}>
                   <View
                     style={{
                       backgroundColor: 'tomato',
@@ -64,7 +105,9 @@ export const MealBar = props => {
             </View>
           </View>
           <Heading level={3}>
-            <Text>$2.99</Text>
+            <Text>
+              {currencySymbol} {price}
+            </Text>
           </Heading>
         </View>
       </TouchableNativeFeedback>

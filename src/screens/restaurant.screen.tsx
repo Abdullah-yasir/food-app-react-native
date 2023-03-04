@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   Image,
   ScrollView,
+  ToastAndroid,
 } from 'react-native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 
@@ -16,7 +17,7 @@ import {Colors} from 'react-native/Libraries/NewAppScreen';
 import {Screens, XColors} from '../config/constants';
 
 import {Accented, Heading} from '../components/formatting.component';
-import {MealBar} from '../components/meal-bar.component';
+import {MealBar, MealBarProps} from '../components/meal-bar.component';
 import {ProgramBar} from '../components/program-bar.component';
 import {DealBar} from '../components/deal-bar.component';
 
@@ -103,22 +104,64 @@ function RestaurantScreen(props): JSX.Element {
 }
 
 function MenuTab(props) {
+  const menu: Array<MealBarProps> = [
+    {
+      title: 'Cheese Burger',
+      price: 2.99,
+      imageSrc: require('./../../assets/meal.jpeg'),
+      rating: 4.1,
+      currencySymbol: '$',
+      onAddToCart: () => {
+        ToastAndroid.show('Added to Cart', ToastAndroid.SHORT);
+      },
+      onPress: () => {
+        props.navigation.navigate(Screens.CART_SCREEN);
+      },
+    },
+    {
+      title: 'Pizza Bar BQ',
+      price: 6.59,
+      imageSrc: require('./../../assets/meal.jpeg'),
+      rating: 4.1,
+      currencySymbol: '$',
+      onAddToCart: () => {
+        ToastAndroid.show('Added to Cart', ToastAndroid.SHORT);
+      },
+    },
+    {
+      title: 'Manchorian',
+      price: 1.59,
+      imageSrc: require('./../../assets/meal.jpeg'),
+      rating: 4.1,
+      currencySymbol: '$',
+      onAddToCart: () => {
+        ToastAndroid.show('Added to Cart', ToastAndroid.SHORT);
+      },
+    },
+    {
+      title: 'Manchorian',
+      price: 1.59,
+      imageSrc: require('./../../assets/meal.jpeg'),
+      rating: 4.1,
+      currencySymbol: '$',
+      onAddToCart: () => {
+        ToastAndroid.show('Added to Cart', ToastAndroid.SHORT);
+      },
+    },
+  ];
+
   return (
     <ScrollView>
       <View style={{paddingHorizontal: 20}}>
         <View style={{height: 20}} />
-        <MealBar />
-        <MealBar />
-        <MealBar />
-        <MealBar />
-        <MealBar />
-        <MealBar />
-        <MealBar />
-        <MealBar />
+        {menu.map((meal, i) => (
+          <MealBar key={i} {...meal} />
+        ))}
       </View>
     </ScrollView>
   );
 }
+
 function MyProgramTab(props) {
   return (
     <ScrollView>

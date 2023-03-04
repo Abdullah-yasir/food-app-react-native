@@ -1,9 +1,11 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
+
 import {Screens} from '../config/constants';
 
 import HomeScreen from '../screens/home.screen';
 import RestaurantScreen from '../screens/restaurant.screen';
+import CartScreen from '../screens/cart.screen';
 
 const Stack = createStackNavigator();
 
@@ -15,6 +17,7 @@ export default function HomeStack() {
         name={Screens.RESTAURANT_SCREEN}
         component={RestaurantScreen}
       />
+      <Stack.Screen name={Screens.CART_SCREEN} component={CartScreen} />
     </Stack.Navigator>
   );
 }

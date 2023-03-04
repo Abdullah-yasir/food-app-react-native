@@ -9,7 +9,7 @@ import {
 import {TouchableOpacity} from 'react-native-gesture-handler';
 
 import {Colors} from 'react-native/Libraries/NewAppScreen';
-import {Accented, Bold, Heading} from '../components/formatting.component';
+import {Accented, Heading} from '../components/formatting.component';
 import {Input, PasswordInput} from '../components/input.component';
 import {Screens, XColors} from '../config/constants';
 
@@ -33,7 +33,7 @@ function SignupScreen(props): JSX.Element {
       </View>
 
       <View style={{backgroundColor: 'white', padding: 20}}>
-        <Input icon="mail" placeholder="Email" />
+        <Input icon="mail" placeholder="Email" keyboardType="email-address" />
         <View style={{height: 20}} />
         <PasswordInput icon="lock1" placeholder="Password" />
         <View style={{height: 20}} />

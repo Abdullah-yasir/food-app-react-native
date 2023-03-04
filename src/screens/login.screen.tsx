@@ -38,7 +38,13 @@ function LoginScreen(props): JSX.Element {
       </View>
 
       <View style={{backgroundColor: 'white', padding: 20}}>
-        <Input icon="mail" placeholder="Email" />
+        <Input
+          icon="mail"
+          placeholder="Email"
+          textContentType="emailAddress" // auto-fill ios
+          autoComplete="email" // auto-fill android
+          keyboardType="email-address"
+        />
         <View style={{height: 20}} />
         <View style={{alignItems: 'flex-end'}}>
           <PasswordInput icon="lock1" placeholder="Password" />
