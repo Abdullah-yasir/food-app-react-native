@@ -19,7 +19,11 @@ export default function HomeDrawer() {
         drawerActiveTintColor: XColors.accent,
       }}>
       <Drawer.Screen name="Home Stack" component={HomeStack} />
-      <Drawer.Screen name="Settings Screen" component={SettingsScreen} />
+      <Drawer.Screen
+        name="Settings Screen"
+        component={SettingsScreen}
+        options={{headerShown: true}}
+      />
     </Drawer.Navigator>
   );
 }

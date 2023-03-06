@@ -19,7 +19,7 @@ import {MealBarProps} from '../components/meal-bar.component';
 
 import {Screens, XColors} from '../config/constants';
 
-type CartItemProps = MealBarProps & {
+export type CartItemProps = MealBarProps & {
   count?: Number;
 };
 
