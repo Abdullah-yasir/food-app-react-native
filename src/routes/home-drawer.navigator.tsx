@@ -6,7 +6,7 @@ import HomeStack from './home-stack.navigator';
 
 import SettingsScreen from '../screens/settings.screen';
 
-import {XColors} from '../config/constants';
+import {Screens, XColors} from '../config/constants';
 
 const Drawer = createDrawerNavigator();
 
@@ -18,9 +18,13 @@ export default function HomeDrawer() {
         drawerActiveBackgroundColor: '#cff7ff',
         drawerActiveTintColor: XColors.accent,
       }}>
-      <Drawer.Screen name="Home Stack" component={HomeStack} />
       <Drawer.Screen
-        name="Settings Screen"
+        name="Home Stack"
+        options={{title: 'Home'}}
+        component={HomeStack}
+      />
+      <Drawer.Screen
+        name={Screens.SETTINGS_SCREEN}
         component={SettingsScreen}
         options={{headerShown: true}}
       />

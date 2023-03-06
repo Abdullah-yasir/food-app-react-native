@@ -26,7 +26,6 @@ function SettingsScreen(): JSX.Element {
   return (
     <View style={{...backgroundStyle, ...styles.screen}}>
       <View style={{height: 20}} />
-
       <Text>Distance ( {distance} ) KM</Text>
       <Slider
         value={distance}
@@ -39,7 +38,6 @@ function SettingsScreen(): JSX.Element {
       />
 
       <View style={{height: 20}} />
-
       <Text>Select Language</Text>
       <Picker
         selectedValue={selectedLanguage}
