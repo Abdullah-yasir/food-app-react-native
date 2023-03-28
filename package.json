@@ -7,7 +7,13 @@
     "ios": "react-native run-ios",
     "lint": "eslint .",
     "start": "react-native start",
-    "test": "jest"
+    "test": "jest",
+    "np": "np --no-publish",
+    "postversion": "react-native-version"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hafizusman2/loyalty-app"
   },
   "dependencies": {
     "@miblanchard/react-native-slider": "^2.3.0",
@@ -45,7 +51,9 @@
     "eslint": "^8.19.0",
     "jest": "^29.2.1",
     "metro-react-native-babel-preset": "0.73.7",
+    "np": "^7.6.4",
     "prettier": "^2.4.1",
+    "react-native-version": "^4.0.0",
     "react-test-renderer": "18.2.0",
     "typescript": "4.8.4"
   },
