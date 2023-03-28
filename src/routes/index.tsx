@@ -1,6 +1,14 @@
-import * as React from 'react';
-import {NavigationContainer} from '@react-navigation/native';
+import React from 'react';
+import {useSelector} from 'react-redux';
 
-export default function App() {
-  return <NavigationContainer></NavigationContainer>;
+import HomeDrawer from './home-drawer.navigator';
+import AuthStack from './auth-stack.navigator';
+
+export function Routes(props) {
+  const state = useSelector(state => state.auth);
+
+  // eslint-disable-next-line curly
+  if (state.isLoggedIn) return <HomeDrawer />;
+
+  return <AuthStack />;
 }
