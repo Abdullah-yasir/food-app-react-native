@@ -1,4 +1,5 @@
 import React from 'react';
+import {Image} from 'react-native';
 import {
   StyleSheet,
   useColorScheme,
@@ -27,6 +28,10 @@ function SignupScreen(props): JSX.Element {
           justifyContent: 'center',
           alignItems: 'center',
         }}>
+        <Image
+          style={{width: 200, height: 150}}
+          source={require('../../assets/logo.jpg')}
+        />
         <Heading level={1}>
           <Text>Create Account</Text>
         </Heading>
@@ -67,7 +72,7 @@ function SignupScreen(props): JSX.Element {
             marginVertical: 20,
             justifyContent: 'center',
           }}>
-          <Text>Already have an Account? </Text>
+          <Text style={{color: 'grey'}}>Already have an Account? </Text>
           <TouchableOpacity
             hitSlop={{top: 20, bottom: 20, left: 20, right: 20}}
             onPress={() => props.navigation.navigate(Screens.LOGIN_SCREEN)}>
@@ -75,6 +80,42 @@ function SignupScreen(props): JSX.Element {
               <Text>Login</Text>
             </Accented>
           </TouchableOpacity>
+        </View>
+        <View
+          style={{
+            position: 'relative',
+            borderBottomWidth: 0.5,
+            borderColor: 'grey',
+            alignItems: 'center',
+            marginVertical: 10,
+          }}>
+          <Text
+            style={{
+              color: 'grey',
+              position: 'absolute',
+              top: -10,
+              backgroundColor: 'white',
+              paddingHorizontal: 25,
+            }}>
+            OR
+          </Text>
+        </View>
+        <View
+          style={{
+            flexDirection: 'row',
+            justifyContent: 'center',
+            alignItems: 'center',
+            marginTop: 10,
+          }}>
+          <Image
+            style={{width: 50, height: 50}}
+            source={require('../../assets/facebook.png')}
+          />
+          <View style={{width: 20}} />
+          <Image
+            style={{width: 50, height: 50}}
+            source={require('../../assets/google.png')}
+          />
         </View>
       </View>
     </View>
