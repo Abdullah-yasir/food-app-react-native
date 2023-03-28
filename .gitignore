@@ -32,6 +32,7 @@ local.properties
 *.hprof
 .cxx/
 *.keystore
+*.keystore.base64.txt
 !debug.keystore
 
 # node.js
@@ -64,3 +65,4 @@ yarn-error.log
 
 # logs
 **/*.log
+
