@@ -65,9 +65,9 @@ export const RestaurantCard = (props: RestaurantCardProps) => {
               elevation: 5,
             }}>
             <Bold>
-              <Text>20 - 30</Text>
+              <Text>15 KM</Text>
             </Bold>
-            <Text style={{fontSize: 12, marginTop: -5}}>min</Text>
+            <Text style={{fontSize: 12, marginTop: -5}}>Distance</Text>
           </View>
         </View>
         <TouchableNativeFeedback onPress={props.onClick}>
