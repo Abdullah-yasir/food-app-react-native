@@ -5,6 +5,7 @@ import {
   StyleSheet,
   Image,
   TouchableNativeFeedback,
+  ImageSourcePropType,
 } from 'react-native';
 
 import AntDesign from 'react-native-vector-icons/AntDesign';
@@ -12,8 +13,14 @@ import {XColors} from '../config/constants';
 
 import {Accented, Bold} from './formatting.component';
 
-type RestaurantCardProps = PropsWithChildren<{
+export type RestaurantCardProps = PropsWithChildren<{
   onClick?: CallableFunction;
+  title: string;
+  cover: ImageSourcePropType;
+  distance: number;
+  rating?: number;
+  reviewsCount: number;
+  width?: number | string;
 }>;
 
 export const RestaurantCard = (props: RestaurantCardProps) => {
@@ -23,7 +30,7 @@ export const RestaurantCard = (props: RestaurantCardProps) => {
         style={{
           elevation: 2,
           backgroundColor: 'white',
-          width: 280,
+          width: props.width,
           borderRadius: 5,
           overflow: 'hidden',
           margin: 5,
@@ -35,10 +42,7 @@ export const RestaurantCard = (props: RestaurantCardProps) => {
             height: 180,
           }}>
           <View style={StyleSheet.absoluteFill}>
-            <Image
-              style={{width: '100%'}}
-              source={require('./../../assets/download.jpeg')}
-            />
+            <Image style={{width: '100%'}} source={props.cover} />
           </View>
           <View
             style={{
@@ -65,26 +69,29 @@ export const RestaurantCard = (props: RestaurantCardProps) => {
               elevation: 5,
             }}>
             <Bold>
-              <Text>15 KM</Text>
+              <Text>{props.distance} KM</Text>
             </Bold>
             <Text style={{fontSize: 12, marginTop: -5}}>Distance</Text>
           </View>
         </View>
         <TouchableNativeFeedback onPress={props.onClick}>
           <View style={{padding: 10}}>
-            <Text style={{fontSize: 20, fontWeight: '500'}}>
-              FRENCY TACOS - 1
-            </Text>
+            <Text style={{fontSize: 20, fontWeight: '500'}}>{props.title}</Text>
             <View style={{flexDirection: 'row', alignItems: 'center'}}>
-              <Accented>
-                <AntDesign name="star" size={14} />
-              </Accented>
-              <Text>
-                <Accented>
-                  <Text>4.1 Rating</Text>
-                </Accented>{' '}
-                (500+)
-              </Text>
+              {props.rating && (
+                <>
+                  {' '}
+                  <Accented>
+                    <AntDesign name="star" size={14} />
+                  </Accented>
+                  <Text>
+                    <Accented>
+                      <Text>{props.rating} Rating</Text>
+                    </Accented>{' '}
+                    ({props.reviewsCount}+)
+                  </Text>
+                </>
+              )}
             </View>
           </View>
         </TouchableNativeFeedback>

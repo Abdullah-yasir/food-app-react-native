@@ -10,13 +10,14 @@ import {XColors} from '../config/constants';
 import {Accented, Heading} from './../components/formatting.component';
 
 export type MealBarProps = {
-  title?: string;
+  title: string;
   currencySymbol?: string;
 
   imageSrc?: ImageSourcePropType;
 
   rating?: Double;
   price?: Double;
+  earnablePoints?: number;
 
   onAddToCart?: (e: GestureResponderEvent) => void;
   onPress?: (e: GestureResponderEvent) => void;
@@ -107,11 +108,19 @@ export const MealBar = (props: MealBarProps) => {
               </View>
             </View>
           </View>
-          <Heading level={3}>
-            <Text>
-              {currencySymbol} {price}
-            </Text>
-          </Heading>
+          <View>
+            <Heading level={3}>
+              <Text>
+                {currencySymbol} {price}
+              </Text>
+            </Heading>
+            {props.earnablePoints && (
+              <View>
+                <Text>{props.earnablePoints}</Text>
+                <Text style={{fontSize: 8}}>points</Text>
+              </View>
+            )}
+          </View>
         </View>
       </TouchableNativeFeedback>
     </View>

@@ -1,5 +1,11 @@
-import React, {PropsWithChildren} from 'react';
-import {View, TextInput, StyleSheet, TouchableOpacity} from 'react-native';
+import React from 'react';
+import {
+  View,
+  TextInput,
+  StyleSheet,
+  TouchableOpacity,
+  TextInputProps,
+} from 'react-native';
 
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import {GestureResponderEvent} from 'react-native/Libraries/Types/CoreEventTypes';
@@ -7,9 +13,10 @@ import {GestureResponderEvent} from 'react-native/Libraries/Types/CoreEventTypes
 import {XColors} from '../config/constants';
 import {Accented} from './formatting.component';
 
-type HeaderProps = PropsWithChildren<{
+type HeaderProps = {
   onPressMenu: (e: GestureResponderEvent) => void;
-}>;
+  inputProps: TextInputProps;
+};
 
 export const Header = (props: HeaderProps) => {
   return (
@@ -36,7 +43,11 @@ export const Header = (props: HeaderProps) => {
         </View>
         <View style={styles.headerRow}>
           <View style={styles.searchContainer}>
-            <TextInput style={styles.search} placeholder="Restaurants, meals" />
+            <TextInput
+              style={styles.search}
+              placeholder="Restaurants, meals"
+              {...props.inputProps}
+            />
             <AntDesign style={styles.serachIcon} name="search1" size={16} />
           </View>
           <View style={styles.filterIcon}>
