@@ -27,14 +27,12 @@ function MealSearch(props: MealSearchProps): JSX.Element {
         {props.results.map((item, i) => (
           <View>
             <RestaurantCard {...item} key={item.title + i} />
-            <ScrollView>
-              <View style={{paddingHorizontal: 30}}>
-                {item.meals &&
-                  item.meals.map((meal, i) => (
-                    <MealBar {...meal} key={meal?.title + i} />
-                  ))}
-              </View>
-            </ScrollView>
+            <View style={{paddingHorizontal: 30}}>
+              {item.meals &&
+                item.meals.map((meal, i) => (
+                  <MealBar {...meal} key={meal?.title + i} />
+                ))}
+            </View>
           </View>
         ))}
       </View>
@@ -43,7 +41,7 @@ function MealSearch(props: MealSearchProps): JSX.Element {
 }
 
 const styles = StyleSheet.create({
-  screen: {},
+  screen: {flex: 1, paddingBottom: 300},
 });
 
 export default MealSearch;
