@@ -19,7 +19,7 @@ import {Screens, XColors} from '../config/constants';
 import {Accented, Heading} from '../components/formatting.component';
 import {MealBar, MealBarProps} from '../components/meal-bar.component';
 import {ProgramBar} from '../components/program-bar.component';
-import {DealBar} from '../components/deal-bar.component';
+import {DealBar, DealBarProps} from '../components/deal-bar.component';
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -114,7 +114,6 @@ function MenuTab(props) {
       title: 'Cheese Burger',
       price: 2.99,
       imageSrc: require('./../../assets/meal.jpeg'),
-      rating: 4.1,
       currencySymbol: '$',
       onAddToCart: () => {
         ToastAndroid.show('Added to Cart', ToastAndroid.SHORT);
@@ -127,7 +126,6 @@ function MenuTab(props) {
       title: 'Pizza Bar BQ',
       price: 6.59,
       imageSrc: require('./../../assets/meal.jpeg'),
-      rating: 4.1,
       currencySymbol: '$',
       onAddToCart: () => {
         ToastAndroid.show('Added to Cart', ToastAndroid.SHORT);
@@ -137,7 +135,6 @@ function MenuTab(props) {
       title: 'Manchorian',
       price: 1.59,
       imageSrc: require('./../../assets/meal.jpeg'),
-      rating: 4.1,
       currencySymbol: '$',
       onAddToCart: () => {
         ToastAndroid.show('Added to Cart', ToastAndroid.SHORT);
@@ -147,7 +144,6 @@ function MenuTab(props) {
       title: 'Manchorian',
       price: 1.59,
       imageSrc: require('./../../assets/meal.jpeg'),
-      rating: 4.1,
       currencySymbol: '$',
       onAddToCart: () => {
         ToastAndroid.show('Added to Cart', ToastAndroid.SHORT);
@@ -212,18 +208,45 @@ function MyProgramTab(props) {
 }
 
 function DealsTab(props) {
+  const deals: Array<DealBarProps> = [
+    {
+      title: 'Mega Deal',
+      description: '3 Zingers, 1 Small Pizza, 1 Drink',
+      newPrice: '$2.45',
+      imageSrc: require('../../assets/meal.jpeg'),
+    },
+    {
+      title: 'Mega Deal',
+      description: '3 Zingers, 1 Small Pizza, 1 Drink',
+      newPrice: '$2.45',
+      imageSrc: require('../../assets/meal.jpeg'),
+    },
+    {
+      title: 'Mega Deal',
+      description: '3 Zingers, 1 Small Pizza, 1 Drink',
+      newPrice: '$2.45',
+      imageSrc: require('../../assets/meal.jpeg'),
+    },
+    {
+      title: 'Mega Deal',
+      description: '3 Zingers, 1 Small Pizza, 1 Drink',
+      newPrice: '$2.45',
+      imageSrc: require('../../assets/meal.jpeg'),
+    },
+    {
+      title: 'Mega Deal',
+      description: '3 Zingers, 1 Small Pizza, 1 Drink',
+      newPrice: '$2.45',
+      imageSrc: require('../../assets/meal.jpeg'),
+    },
+  ];
   return (
     <ScrollView>
       <View style={{paddingHorizontal: 20}}>
         <View style={{height: 20}} />
-        <DealBar />
-        <DealBar />
-        <DealBar />
-        <DealBar />
-        <DealBar />
-        <DealBar />
-        <DealBar />
-        <DealBar />
+        {deals.map(deal => (
+          <DealBar {...deal} />
+        ))}
       </View>
     </ScrollView>
   );

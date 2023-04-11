@@ -1,9 +1,23 @@
 import React from 'react';
-import {View, Text, Image, TouchableNativeFeedback} from 'react-native';
+import {
+  View,
+  Text,
+  Image,
+  TouchableNativeFeedback,
+  ImageSourcePropType,
+} from 'react-native';
 
 import {Heading} from './formatting.component';
 
-export const DealBar = props => {
+export type DealBarProps = {
+  imageSrc: ImageSourcePropType;
+  title: String;
+  description: String;
+  newPrice: String;
+  oldPrice?: String;
+};
+
+export const DealBar = (props: DealBarProps) => {
   return (
     <View style={{overflow: 'hidden', borderRadius: 5, marginBottom: 20}}>
       <TouchableNativeFeedback>
@@ -22,7 +36,7 @@ export const DealBar = props => {
               }}>
               <Image
                 style={{resizeMode: 'center', width: '100%', height: '100%'}}
-                source={require('./../../assets/meal.jpeg')}
+                source={props.imageSrc}
               />
             </View>
             <View
@@ -32,7 +46,7 @@ export const DealBar = props => {
               }}>
               <View style={{marginHorizontal: 10}}>
                 <Heading level={3}>
-                  <Text>Mega Deal</Text>
+                  <Text>{props.title}</Text>
                 </Heading>
                 <View
                   style={{
@@ -40,21 +54,19 @@ export const DealBar = props => {
                     alignItems: 'center',
                     marginBottom: 5,
                   }}>
-                  <Text style={{maxWidth: 160}}>
-                    3 Zingers, 1 Small Pizza, 1 Drink
-                  </Text>
+                  <Text style={{maxWidth: 160}}>{props.description}</Text>
                 </View>
               </View>
             </View>
           </View>
           <View>
             <Heading level={3}>
-              <Text>$2.99</Text>
+              <Text>{props.newPrice}</Text>
             </Heading>
             <Heading
               level={3}
               style={{textDecorationLine: 'line-through', color: 'grey'}}>
-              <Text>$4.50</Text>
+              <Text>{props.oldPrice}</Text>
             </Heading>
           </View>
         </View>
