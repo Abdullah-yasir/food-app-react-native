@@ -8,6 +8,8 @@ import {
   Image,
   ScrollView,
   ToastAndroid,
+  Animated,
+  PanResponder,
 } from 'react-native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 
@@ -30,10 +32,54 @@ function RestaurantScreen(props): JSX.Element {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
 
+  const fadeAnim = React.useRef(new Animated.Value(100)).current;
+
+  const panResponder = React.useRef(
+    PanResponder.create({
+      // Ask to be the responder:
+      onStartShouldSetPanResponder: (evt, gestureState) => true,
+      onStartShouldSetPanResponderCapture: (evt, gestureState) => true,
+      onMoveShouldSetPanResponder: (evt, gestureState) => true,
+      onMoveShouldSetPanResponderCapture: (evt, gestureState) => true,
+
+      onPanResponderGrant: (evt, gestureState) => {
+        // The gesture has started. Show visual feedback so the user knows
+        // what is happening!
+        // gestureState.d{x,y} will be set to zero now
+      },
+      onPanResponderMove: (evt, gestureState) => {
+        if (gestureState.moveX < 50) return;
+        Animated.timing(fadeAnim, {
+          toValue: gestureState.moveY,
+          useNativeDriver: false,
+        }).start();
+        // The most recent move distance is gestureState.move{X,Y}
+        // The accumulated gesture distance since becoming responder is
+        // gestureState.d{x,y}
+      },
+      onPanResponderTerminationRequest: (evt, gestureState) => true,
+      onPanResponderRelease: (evt, gestureState) => {
+        // The user has released all touches while this view is the
+        // responder. This typically means a gesture has succeeded
+      },
+      onPanResponderTerminate: (evt, gestureState) => {
+        // Another component has become the responder, so this gesture
+        // should be cancelled
+      },
+      onShouldBlockNativeResponder: (evt, gestureState) => {
+        // Returns whether this component should block native components from becoming the JS
+        // responder. Returns true by default. Is currently only supported on android.
+        return true;
+      },
+    }),
+  ).current;
+
   return (
     <View style={{...backgroundStyle, ...styles.screen}}>
-      <View style={styles.banner}>
-        <View style={styles.bannerImage}>
+      <Animated.View
+        style={[styles.banner, {height: fadeAnim}]}
+        {...panResponder.panHandlers}>
+        <View style={[styles.bannerImage]}>
           <View style={StyleSheet.absoluteFill}>
             <Image
               style={{width: '100%'}}
@@ -93,7 +139,7 @@ function RestaurantScreen(props): JSX.Element {
             <Text>View all offers</Text>
           </Accented>
         </View>
-      </View>
+      </Animated.View>
       <View style={{flex: 1}}>
         <Tab.Navigator initialRouteName={Screens.MENU_SCREEN}>
           <Tab.Screen name={Screens.MENU_SCREEN} component={MenuTab} />
@@ -151,9 +197,32 @@ function MenuTab(props) {
     },
   ];
 
+  const restaurantMeals = [
+    'Burger and fries',
+    'Pizza',
+    'Steak and potatoes',
+    'Fish and chips',
+    'Salad',
+    'Tacos',
+    'Sushi',
+    'Pasta',
+    'Curry',
+    'Sandwich',
+    'Soup',
+    'Roast chicken',
+    'BBQ ribs',
+  ];
+
   return (
     <ScrollView>
       <View style={{paddingHorizontal: 20}}>
+        <ScrollView horizontal>
+          {restaurantMeals.map(type => (
+            <TouchableOpacity onPress={() => {}}>
+              <Text style={{marginRight: 20, marginVertical: 10}}>{type}</Text>
+            </TouchableOpacity>
+          ))}
+        </ScrollView>
         <View style={{height: 20}} />
         {menu.map((meal, i) => (
           <MealBar key={i} {...meal} />
