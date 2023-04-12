@@ -161,39 +161,29 @@ function MenuTab(props) {
       price: 2.99,
       imageSrc: require('./../../assets/meal.jpeg'),
       currencySymbol: '$',
-      onAddToCart: () => {
-        ToastAndroid.show('Added to Cart', ToastAndroid.SHORT);
-      },
       onPress: () => {
         props.navigation.navigate(Screens.PRODUCT_SCREEN);
       },
+      earnablePoints: 200,
     },
     {
       title: 'Pizza Bar BQ',
       price: 6.59,
       imageSrc: require('./../../assets/meal.jpeg'),
       currencySymbol: '$',
-      onAddToCart: () => {
-        ToastAndroid.show('Added to Cart', ToastAndroid.SHORT);
-      },
+      earnablePoints: 170,
     },
     {
       title: 'Manchorian',
       price: 1.59,
       imageSrc: require('./../../assets/meal.jpeg'),
       currencySymbol: '$',
-      onAddToCart: () => {
-        ToastAndroid.show('Added to Cart', ToastAndroid.SHORT);
-      },
     },
     {
       title: 'Manchorian',
       price: 1.59,
       imageSrc: require('./../../assets/meal.jpeg'),
       currencySymbol: '$',
-      onAddToCart: () => {
-        ToastAndroid.show('Added to Cart', ToastAndroid.SHORT);
-      },
     },
   ];
 
@@ -282,35 +272,30 @@ function DealsTab(props) {
       title: 'Mega Deal',
       description: '3 Zingers, 1 Small Pizza, 1 Drink',
       newPrice: '$2.45',
-      oldPrice: '$4.45',
       imageSrc: require('../../assets/meal.jpeg'),
     },
     {
       title: 'Mega Deal',
       description: '3 Zingers, 1 Small Pizza, 1 Drink',
       newPrice: '$2.45',
-      oldPrice: '$4.45',
       imageSrc: require('../../assets/meal.jpeg'),
     },
     {
       title: 'Mega Deal',
       description: '3 Zingers, 1 Small Pizza, 1 Drink',
       newPrice: '$2.45',
-      oldPrice: '$4.45',
       imageSrc: require('../../assets/meal.jpeg'),
     },
     {
       title: 'Mega Deal',
       description: '3 Zingers, 1 Small Pizza, 1 Drink',
       newPrice: '$2.45',
-      oldPrice: '$4.45',
       imageSrc: require('../../assets/meal.jpeg'),
     },
     {
       title: 'Mega Deal',
       description: '3 Zingers, 1 Small Pizza, 1 Drink',
       newPrice: '$2.45',
-      oldPrice: '$4.45',
       imageSrc: require('../../assets/meal.jpeg'),
     },
   ];

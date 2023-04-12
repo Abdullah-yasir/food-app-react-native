@@ -42,14 +42,14 @@ function ProductScreen(props): JSX.Element {
                 </Accented>
               </View>
             </TouchableOpacity>
-            <TouchableOpacity
+            {/* <TouchableOpacity
               onPress={() => props.navigation.navigate(Screens.CART_SCREEN)}>
               <View style={{...styles.iconButton, marginRight: 20}}>
                 <Accented>
                   <AntDesign name="shoppingcart" size={24} />
                 </Accented>
               </View>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
           </View>
         </View>
       </View>
@@ -105,7 +105,7 @@ function ProductScreen(props): JSX.Element {
         <TouchableNativeFeedback disabled={count === 0} onPress={() => {}}>
           <View style={styles.addToCartButton}>
             <Heading level={3} style={{color: 'white'}}>
-              <Text>Add to cart</Text>
+              <Text>Checkout</Text>
             </Heading>
           </View>
         </TouchableNativeFeedback>
